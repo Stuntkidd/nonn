@@ -120,16 +120,66 @@ export default function Home() {
 
   const magazineContent = {
     release: 'Udbhav 2025',
-    tagline: 'Articles, projects, and interviews from the Data Science Society at CMRIT Hyderabad.',
+    tagline: 'A comprehensive collection of insights and highlights from the Data Science Society.', 
     insideThisIssue: [
-      'Feature: Building an MLOps pipeline on campus',
-      'Case Study: Forecasting lab occupancy with time series',
-      'Tutorial: Visualizing embeddings with UMAP',
-      'Interview: Alumni working in applied AI',
-      'Showcase: Award-winning DSS projects',
+      // College & Administration
+      'College Overview',
+      'About College',
+      'Director’s Message',
+      'Principal’s Message',
+      'HOD & Department',
+      // Academics & Achievements
+      'Faculty Research & Insights',
+      'Student Research & Insights',
+      'Department Ascend',
+      'Faculty Laurels',
+      'Student Laurels',
+      // Inspiration & Perspectives
+      'Motivation',
+      'Legendary',
+      'Faculty Viewpoints',
+      'Student Viewpoints',
+      'Alumni Voices',
+      // Campus Life & Beyond
+      'Academic Highlights',
+      'Projects & Expert Opinions',
+      'Recent Trends in Data Science',
+      'Placements & Career Insights',
+      'Cultural & Arts',
+      'Sports & NSS',
     ],
     contributors: 'DSS Editorial Team'
   }
+
+  // Logic to split the articles into two columns for the magazine section
+  const articleList = magazineContent.insideThisIssue;
+  const splitPoint = Math.ceil(articleList.length / 2); // Split point for 21 articles is 11
+  const articleCol1 = articleList.slice(0, splitPoint);
+  const articleCol2 = articleList.slice(splitPoint);
+
+  // --- NEW: LATEST NEWS DATA (Retained for easy reference) ---
+  const latestNews = [
+    {
+        id: 1,
+        title: "Udbhav 2025: Magazine Release",
+        description: "Explore the latest articles, projects, and interviews from the DSS community in our official publication.",
+        tag: "NEW",
+        link: "https://heyzine.com/flip-book/4b560a9db7.html#page/1",
+        date: "October 24, 2025",
+    },
+    {
+        id: 2,
+        title: "Live CodeX: Inter-college Coding Challenge",
+        description: "Join the live-streamed Inter-college Coding Challenge and test your skills against the best data scientists.",
+        tag: "LIVE",
+        link: "https://index.netlify.app",
+        date: "October 24, 2025",
+    },
+  ];
+
+  const featuredNews = latestNews[0]; // Udbhav Magazine
+  const secondaryNews = latestNews[1]; // Live CodeX
+  // --- END NEW DATA ---
   
   // Removed unused const: const socialProofWords = [...]
 
@@ -196,6 +246,67 @@ export default function Home() {
             </footer>
         </Card>
       </section>
+      
+      {/* --- START REPLICATED: LATEST NEWS SECTION (Based on Udbhav Magazine) --- */}
+      <Section title="Latest News" subtitle="Current Events & Releases">
+        <div id="latest-news" className="grid md:grid-cols-3 gap-5 items-stretch">
+          
+          {/* Featured News Card (Magazine Release Style) - Left Column */}
+          <Card className="p-0 md:col-span-1 overflow-hidden h-full flex flex-col" style={{ border: '1px solid var(--accent)', background: 'linear-gradient(160deg, color-mix(in oklab, var(--accent) 20%, #0a0a0a) 0%, #0a0a0a 70%)' }}>
+            <div className="p-8 flex-grow">
+              <div className="text-xs tracking-wide opacity-90 text-white uppercase">{featuredNews.tag} Release</div>
+              <div className="mt-3 text-3xl font-semibold tracking-tight text-white"><span className='text-[color:var(--accent)]'>{featuredNews.title.split(':')[0]}</span> {featuredNews.title.split(':')[1]}</div>
+              <p className="mt-2 text-sm opacity-90 text-white max-w-sm">
+                {featuredNews.description}
+              </p>
+            </div>
+            <div className="p-8 pt-0 flex-none">
+              <div className="flex gap-3">
+                <Button asChild><a href={featuredNews.link} target="_blank" rel="noopener noreferrer">Read Now</a></Button>
+                <Button variant="outline" asChild className="border-white/[0.3] text-white hover:bg-white/[0.1]"><a href="/events">All Publications</a></Button>
+              </div>
+              <p className="mt-4 text-xs text-white/70">Released: {featuredNews.date}</p>
+            </div>
+          </Card>
+
+          {/* Other Highlights Card (Issue Highlights Style) - Right Columns */}
+          <Card className="p-6 md:col-span-2 flex flex-col justify-between">
+            <div className='flex-grow'>
+                <h3 className="text-xl font-medium mb-3">Upcoming <span className='text-[color:var(--accent)]'>Highlights</span></h3>
+                
+                {/* Secondary News Item (Live CodeX) */}
+                <a href={secondaryNews.link} target="_blank" rel="noopener noreferrer" className="block p-4 rounded-lg transition-colors duration-200 hover:bg-white/[0.05] border border-white/[0.12] hover:border-[color:var(--accent)] group">
+                    <div className='flex items-center justify-between'>
+                        <h4 className="text-lg font-bold text-foreground group-hover:text-[color:var(--accent)] transition-colors">
+                            {secondaryNews.title}
+                        </h4>
+                        <span className="px-3 py-1 text-xs font-bold uppercase rounded-full bg-red-600 text-white animate-pulse">
+                            {secondaryNews.tag}
+                        </span>
+                    </div>
+                    <p className="mt-1 text-sm text-muted">{secondaryNews.description}</p>
+                    <p className="mt-2 text-xs font-semibold text-muted/80">Date: {secondaryNews.date}</p>
+                </a>
+
+                {/* Placeholder/Call-to-Action for other news/events */}
+                <div className="mt-6 space-y-3">
+                    <h4 className="text-base font-semibold text-foreground">Other Key Events:</h4>
+                    <ul className="grid sm:grid-cols-2 gap-2 text-sm text-muted">
+                        <li>• Mentorship Program Launch</li>
+                        <li>• Data Ethics Seminar Series</li>
+                        <li>• Annual Tech Project Showcase</li>
+                        <li>• Next Workshop: Big Data with Spark</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div className="mt-8 text-center border-t border-white/[0.12] pt-4">
+              <Button variant="outline" asChild className="w-full border-white/[0.3]"><a href="/events">View All Events & News</a></Button>
+            </div>
+          </Card>
+        </div>
+      </Section>
+      {/* --- END REPLICATED: LATEST NEWS SECTION --- */}
 
       {/* WHY JOIN US? SECTION - Title reverted to string, Headings Highlighted internally */}
       <Section title="Why Join Us?" subtitle="Unlock your potential in Data Science">
@@ -400,7 +511,7 @@ export default function Home() {
         <div className="mt-4"><Button variant="outline" asChild><a href="/gallery">Open gallery</a></Button></div>
       </Section>
 
-      {/* REDESIGNED UDBHAV MAGAZINE SECTION */}
+      {/* REDESIGNED UDBHAV MAGAZINE SECTION (Original structure used as inspiration) */}
       <Section title="Udbhav Magazine" subtitle="The official DSS publication">
         <div id="udbhav" className="grid md:grid-cols-3 gap-5 items-stretch">
           
@@ -410,7 +521,7 @@ export default function Home() {
               <div className="text-xs tracking-wide opacity-90 text-white">NEW RELEASE</div>
               <div className="mt-3 text-3xl font-semibold tracking-tight text-white"><span className='text-[color:var(--accent)]'>Udbhav</span> 2025</div>
               <p className="mt-2 text-sm opacity-90 text-white max-w-sm">
-                Articles, projects, and interviews from the Data Science Society at CMRIT Hyderabad.
+                {magazineContent.tagline}
               </p>
             </div>
             <div className="p-8 pt-0 flex-none">
@@ -421,20 +532,22 @@ export default function Home() {
             </div>
           </Card>
 
-          {/* Issue Highlights Card */}
+          {/* Issue Highlights Card - UPDATED TO USE magazineContent DATA */}
           <Card className="p-6 md:col-span-2 flex flex-col justify-between">
             <div className='flex-grow'>
                 <h3 className="text-xl font-medium mb-3">Inside this <span className='text-[color:var(--accent)]'>Issue</span></h3>
                 <div className="grid sm:grid-cols-2 gap-4">
+                    {/* Dynamic list for column 1 */}
                     <ul className="mt-3 grid gap-2 text-sm space-y-1">
-                      <li>• Feature: Building an MLOps pipeline on campus</li>
-                      <li>• Case Study: Forecasting lab occupancy with time series</li>
-                      <li>• Tutorial: Visualizing embeddings with UMAP</li>
+                      {articleCol1.map((item, index) => (
+                        <li key={`col1-${index}`}>• {item}</li>
+                      ))}
                     </ul>
+                    {/* Dynamic list for column 2 */}
                     <ul className="mt-3 grid gap-2 text-sm space-y-1">
-                        <li>• Interview: Alumni working in applied AI</li>
-                        <li>• Showcase: Award-winning DSS projects</li>
-                        <li>• News: Highlights from the latest DSS events</li>
+                        {articleCol2.map((item, index) => (
+                        <li key={`col2-${index}`}>• {item}</li>
+                      ))}
                     </ul>
                 </div>
             </div>
