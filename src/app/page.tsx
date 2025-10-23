@@ -3,7 +3,7 @@
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
-import ContractCard from "@/components/ui/ContractCard"; 
+// Removed unused import: import ContractCard from "@/components/ui/ContractCard"; 
 import Image from 'next/image'; // Ensure Next.js Image component is imported
 import React from 'react'; // Ensure React is imported for JSX
 
@@ -131,18 +131,9 @@ export default function Home() {
     contributors: 'DSS Editorial Team'
   }
   
-  // Data array for social proof phrases (Not used anymore, but kept for context if needed later)
-  const socialProofWords = [
-      "Game-Changer",
-      "5 Stars",
-      "More Productive",
-      "Less Stress",
-      "Highly Recommended",
-      "Saves Time",
-      "Must-Have for Students"
-    ];
+  // Removed unused const: const socialProofWords = [...]
 
-  // Removed SocialProof Component Logic
+  // The SocialProof component logic was already removed.
 
   return (
     <div className="relative overflow-hidden">
@@ -200,6 +191,9 @@ export default function Home() {
             <p className="text-xl sm:text-2xl font-light italic text-muted max-w-4xl mx-auto leading-relaxed">
                 &ldquo;The greatest value of a <span className='text-[color:var(--accent)] font-medium not-italic'>picture</span> is when it forces us to notice what we never expected to <span className='text-[color:var(--accent)] font-medium not-italic'>see</span>.&rdquo;
             </p>
+            <footer className="mt-6 text-sm sm:text-base font-semibold text-foreground">
+                — John Tukey, <span className='text-muted font-normal'>Statistician</span>
+            </footer>
         </Card>
       </section>
 
