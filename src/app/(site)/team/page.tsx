@@ -1,34 +1,32 @@
+// src/app/(site)/team/page.tsx (Assuming this file MUST be .tsx for Vercel)
+
 import Image from 'next/image'; 
 
-// Removed unused import: import { team } from "@/data/sample";
-// Removed problematic import: import TeamCard from "@/components/team/TeamCard"; 
+// 1. Explicit TypeScript Type Definitions
+interface Socials {
+  linkedin: string;
+  twitter?: string; // Optional since some are set to '#'
+  email: string;
+}
 
-// ADDED: Type definition for TeamMember structure. 
-// This is typically imported from a types file in a larger project (e.g., 'import type { TeamMember } from "@/data/types";')
-// The JSDoc below serves as documentation and allows IDEs (like VS Code) to provide type-checking and autocompletion 
-// even in a JavaScript file, which is the best practice fix for a missing type.
+interface TeamMember {
+  id: number;
+  name: string;
+  title: string;
+  imageUrl: string;
+  socials: Socials;
+}
 
-/**
- * @typedef {object} Socials
- * @property {string} linkedin
- * @property {string} [twitter]
- * @property {string} email
- */
-
-/**
- * @typedef {object} TeamMember
- * @property {number} id
- * @property {string} name
- * @property {string} title
- * @property {string} imageUrl
- * @property {Socials} socials
- */
+// Props interface for TeamCard
+interface TeamCardProps {
+    Member: TeamMember;
+}
 
 export const metadata = { title: "Team" };
 
-// Mock data structure for the team members (11 total)
-/** @type {TeamMember[]} */
-const teamMembers = [
+// Mock data structure for the team members (12 total)
+// 2. Explicitly cast the array to the correct type
+const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: 'Ch Pradeeptha',
@@ -116,8 +114,7 @@ const teamMembers = [
 ];
 
 // Mock data for Faculty Coordinators
-/** @type {TeamMember[]} */
-const facultyCoordinators = [
+const facultyCoordinators: TeamMember[] = [
     {
         id: 1,
         name: 'Ms Samala Bhavana',
@@ -134,12 +131,8 @@ const facultyCoordinators = [
     },
 ];
 
-// FIX: TeamCard definition signature is fixed to destructure the correct prop (Member)
-// and enforce the type defined by JSDoc to resolve the build error.
-/**
- * @param {{Member: TeamMember}} props
- */
-const TeamCard = ({ Member  }) => { // Member is destructured here
+// FIX: TeamCard definition signature is fixed to use the explicit TypeScript interface.
+const TeamCard = ({ Member }: TeamCardProps) => { 
     return (
         <div className="card relative p-0 overflow-hidden">
             {/* Image Section - Increased height to h-72 */}
