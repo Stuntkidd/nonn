@@ -95,7 +95,7 @@ export default function Page() {
                 {/* FIX: Replaced <img> with Next.js <Image /> component for performance */}
                 <div className="relative w-10 h-10 shrink-0">
                     <Image 
-                        src="https://studenttribe.in/wp-content/uploads/2024/12/WhatsApp-Image-2024-12-16-at-5.33.34-PM-300x300.jpeg" // REPLACE WITH ACTUAL LOGO URL
+                        src="https://media.licdn.com/dms/image/v2/D4D0BAQG64ykoB_cF4Q/company-logo_200_200/B4DZZOATdPGwAI-/0/1745065425306/stumagz_logo?e=2147483647&v=beta&t=s3Evz_skb7jOvJ4SMIQD0CrGyNZldwCe4f6f4YdfPho" // REPLACE WITH ACTUAL LOGO URL
                         alt="StudentTribe Logo"
                         fill // Use fill and define parent div size
                         sizes="40px"
