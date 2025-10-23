@@ -1,3 +1,7 @@
+// ./src/app/(site)/events/page.tsx
+import Image from 'next/image'; // ADDED: Import Next.js Image component
+import React from 'react'; // Ensure React is imported for JSX
+
 export const metadata = { title: "LivecodeX" };
 
 export default function Page() {
@@ -88,12 +92,16 @@ export default function Page() {
           >
             {/* All content inside here is WHITE */}
             <div className="flex items-center justify-center mb-4">
-                {/* Image Placeholder for External Logo */}
-                <img 
-                    src="https://studenttribe.in/wp-content/uploads/2024/12/WhatsApp-Image-2024-12-16-at-5.33.34-PM-300x300.jpeg" // REPLACE WITH ACTUAL LOGO URL
-                    alt="StudentTribe Logo"
-                    className="w-10 h-auto"
-                />
+                {/* FIX: Replaced <img> with Next.js <Image /> component for performance */}
+                <div className="relative w-10 h-10 shrink-0">
+                    <Image 
+                        src="https://studenttribe.in/wp-content/uploads/2024/12/WhatsApp-Image-2024-12-16-at-5.33.34-PM-300x300.jpeg" // REPLACE WITH ACTUAL LOGO URL
+                        alt="StudentTribe Logo"
+                        fill // Use fill and define parent div size
+                        sizes="40px"
+                        className="rounded-full object-cover"
+                    />
+                </div>
                 <span className="ml-2 text-xl font-bold text-white">StudentTribe</span>
             </div>
             
