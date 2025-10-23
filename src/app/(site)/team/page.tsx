@@ -1,4 +1,3 @@
-
 import Image from 'next/image'; 
 
 // Removed unused import: import { team } from "@/data/sample";
@@ -135,13 +134,12 @@ const facultyCoordinators = [
     },
 ];
 
-// FIX: TeamCard definition changed to a standard const function component
-// The issue was likely due to the arrow function syntax conflicting with how Next.js processes local components.
-
+// FIX: TeamCard definition signature is fixed to destructure the correct prop (Member)
+// and enforce the type defined by JSDoc to resolve the build error.
 /**
- * @param {{TeamMember: TeamMember}} props
+ * @param {{Member: TeamMember}} props
  */
-const TeamCard = ({ Member  }) => {
+const TeamCard = ({ Member  }) => { // Member is destructured here
     return (
         <div className="card relative p-0 overflow-hidden">
             {/* Image Section - Increased height to h-72 */}
