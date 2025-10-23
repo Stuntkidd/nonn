@@ -91,18 +91,9 @@ export default function Page() {
             }}
           >
             {/* All content inside here is WHITE */}
+            {/* Removed the StudentTribe image and its container */}
             <div className="flex items-center justify-center mb-4">
-                {/* FIX: Replaced <img> with Next.js <Image /> component for performance */}
-                <div className="relative w-10 h-10 shrink-0">
-                    <Image 
-                        src="https://media.licdn.com/dms/image/v2/D4D0BAQG64ykoB_cF4Q/company-logo_200_200/B4DZZOATdPGwAI-/0/1745065425306/stumagz_logo?e=2147483647&v=beta&t=s3Evz_skb7jOvJ4SMIQD0CrGyNZldwCe4f6f4YdfPho" // REPLACE WITH ACTUAL LOGO URL
-                        alt="StudentTribe Logo"
-                        fill // Use fill and define parent div size
-                        sizes="40px"
-                        className="rounded-full object-cover"
-                    />
-                </div>
-                <span className="ml-2 text-xl font-bold text-white">StudentTribe</span>
+                <span className="ml-2 text-2xl font-bold text-white">StudentTribe</span>
             </div>
             
             <p className="text-sm text-white text-center mb-4 font-medium">
