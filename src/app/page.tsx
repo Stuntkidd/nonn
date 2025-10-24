@@ -164,7 +164,7 @@ export default function Home() {
         title: "Udbhav 2025: Magazine Release",
         description: "Explore the latest articles, projects, and interviews from the DSS community in our official publication.",
         tag: "NEW",
-        link: "https://heyzine.com/flip-book/4b560a9db7.html#page/1",
+        link: "https://udhbhv-dss-chronicle.vercel.app/",
         date: "October 24, 2025",
     },
     {
