@@ -172,7 +172,7 @@ export default function Home() {
         title: "Live CodeX: Inter-college Coding Challenge",
         description: "Join the live-streamed Inter-college Coding Challenge and test your skills against the best data scientists.",
         tag: "LIVE",
-        link: "https://index.netlify.app",
+        link: "https://live-codex-reveal.vercel.app/",
         date: "October 24, 2025",
     },
   ];
